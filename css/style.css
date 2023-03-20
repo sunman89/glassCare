@@ -1,0 +1,31 @@
+body {
+    background-color: lightgrey !important;
+}
+
+.widget-container {
+    box-shadow: 0 0 13px 0 rgba(82, 63, 105, 0.05);
+    padding: 30px;
+    background-color: #fff !important;
+    border-radius: 10px;
+    border-left-color: #ccc;
+    border-left-width: 1px;
+    border-left-style: solid;
+    border-top-color: #ccc;
+    border-top-width: 1px;
+    border-top-style: solid;
+    margin-bottom: 10px;
+    -webkit-box-shadow: 6px 9px 13px -8px rgba(125, 125, 125, 1);
+    -moz-box-shadow: 6px 9px 13px -8px rgba(125, 125, 125, 1);
+    box-shadow: 6px 9px 13px -8px rgba(125, 125, 125, 1);
+}
+
+.sub-widget-title {
+    font-size: 1em;
+    width: 100%;
+    background-color: #edf3ff;
+    padding: 5px;
+    padding-left: 10px;
+    border-style: solid;
+    border-color: #adadad;
+    border-width: 1px;
+}
