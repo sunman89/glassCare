@@ -6,8 +6,8 @@ require __DIR__ . DIRECTORY_SEPARATOR . 'initialise.php';
 require __DIR__ . '/models/Landing.php';
 
 $landing = new Landing($db);
-if(!isset($_REQUEST['action'])) $_REQUEST['action'] = 'landing'; // Default action
-$data = $landing->formatAll($_REQUEST); // Clean url params.
+if(!isset($_REQUEST['action'])) $_REQUEST['action'] = 'landing'; // Default action/route
+$data = $landing->formatAll($_REQUEST); // Clean up the url params.
 
 /*
 |--------------------------------------------------------------------------
@@ -17,12 +17,13 @@ $data = $landing->formatAll($_REQUEST); // Clean url params.
 switch($_REQUEST['action'])
 {
     case 'landing':
-        // Output the data here. And also have the form to upload stuff here. 
+        // Page to show the upload form and also the uploaded images links.
         $outputs    = $landing->getAllImages();
         $layout     = 'landing.inc.php';
     break;
 
     case 'upload-image':
+        // Upload the image to the proper directory.
         $failed = $landing->addImageAndText($data);
         // If has a failed message, pass it through to display it.
         header('Location: landing.php?'.(($failed) ? 'failed='.$failed . '&image_text='.$data['image_text'] :'' ));
