@@ -23,13 +23,14 @@ switch($_REQUEST['action'])
     break;
 
     case 'upload-image':
-        // Upload the image to the proper directory.
+        // Try to upload the image to the proper directory.
         $failed = $landing->addImageAndText($data);
-        // If has a failed message, pass it through to display it.
+        // If it failed, then pass the message through to display it.
         header('Location: landing.php?'.(($failed) ? 'failed='.$failed . '&image_text='.$data['image_text'] :'' ));
     break;
 
     case 'display':
+        // Page to display the actual image.
         $image      = $landing->getImageToDisplay($data);
         $layout     = 'display-image.inc.php';
     break;
@@ -41,6 +42,7 @@ switch($_REQUEST['action'])
     */
     default:
         echo ("Error. No Action.");
+        exit();
     break; 
 }
 

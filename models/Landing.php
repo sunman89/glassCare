@@ -77,7 +77,7 @@ class Landing
     public function addImageAndText($data)
     {
         $failed = false;
-        $result = $this->uploadImage($data);
+        $result = $this->uploadImage();
         if($result['success'])
         {
             // Insert the data into the database
@@ -87,7 +87,7 @@ class Landing
         return $failed;
     }
 
-    public function uploadImage($data)
+    public function uploadImage()
     {
         $result = ['failed' => false, 'success' => false];
 
@@ -104,6 +104,8 @@ class Landing
                 else
                 {
                     $tmpname = $_FILES['image']['tmp_name'];
+
+                    // Check the file type is an image.
                     $proceed = false;
                     switch(exif_imagetype($tmpname))
                     {
