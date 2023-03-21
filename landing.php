@@ -23,28 +23,14 @@ switch($_REQUEST['action'])
     break;
 
     case 'upload-image':
-        $proceed = $landing->addImageAndText($data);
-
-        if($proceed['failed'])
-        {
-            // Then return to landing page again, with error message.
-            header('Location: landing.php?failed='.$proceed['failed'] . '&image_text='.$data['image_text']);
-        }
-        /**
-         * Check if image has been uploaded. If not, return a fail message and then return to landing page displaying the fail message and the text the user put in.
-         */
-        echo '<pre>';
-        print_r($data);
-        exit();
+        $failed = $landing->addImageAndText($data);
+        // If has a failed message, pass it through to display it.
+        header('Location: landing.php?'.(($failed) ? 'failed='.$failed . '&image_text='.$data['image_text'] :'' ));
     break;
 
     case 'display':
-        // In here, display the image and the text.
-        // Have go back button.
-        // If no image, or image is wrong tell the user.
-        echo '<pre>';
-        print_r($data);
-        exit();
+        $image      = $landing->getImageToDisplay($data);
+        $layout     = 'display-image.inc.php';
     break;
 
     /*
